@@ -93,12 +93,15 @@ uint16_t Read_ADC(void);
   */
 int main(void)
 {
+	//printf("Hello");
   /* NUCLEO board initialization */
 	/* Init for UART, ADC, GPIO and SPI */
   NUCLEO_Board_Init();
   
   /* X-NUCLEO-IHM02A1 initialization */
   BSP_Init();
+	
+	MX_GPIO_Init();
 	
 	#ifdef NUCLEO_USE_USART
   /* Transmit the initial message to the PC via UART */
@@ -117,11 +120,13 @@ int main(void)
 	
 	/*Initialize the motor parameters */
 	Motor_Param_Reg_Init();
-  
+	
   /* Infinite loop */
   while (1)
   {
-
+		uint8_t pin = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
+		USART_Transmit(&huart2, num2hex(pin, HALFBYTE_F));
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, pin);
 #ifdef TEST_MOTOR		
 
 		/* Check if any Application Command for L6470 has been entered by USART */

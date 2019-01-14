@@ -151,6 +151,20 @@ void MX_GPIO_Init(void)
   /* Configures LED GPIO */
   BSP_LED_Init(LED2);
 #endif
+	
+	GPIO_InitTypeDef GPIO_InitStruct;
+	
+	__GPIOB_CLK_ENABLE(); 
+	
+	GPIO_InitStruct.Pin = GPIO_PIN_0;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT; // disgital Input
+	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	
+	GPIO_InitStruct.Pin = GPIO_PIN_10;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP; // digital Output
+	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); 
 }
 
 /**
@@ -402,23 +416,23 @@ void MX_ADC1_Init(void)
     /**Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion) 
     */
   hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ;
-  hadc1.Init.Resolution = ;
-  hadc1.Init.ScanConvMode = ;
-  hadc1.Init.ContinuousConvMode = ;
-  hadc1.Init.DiscontinuousConvMode = ;
-  hadc1.Init.ExternalTrigConvEdge = ;
-  hadc1.Init.DataAlign = ;
-  hadc1.Init.NbrOfConversion = ;
-  hadc1.Init.DMAContinuousRequests = ;
-  hadc1.Init.EOCSelection = ;
+  //hadc1.Init.ClockPrescaler = ;
+  //hadc1.Init.Resolution = ;
+  //hadc1.Init.ScanConvMode = ;
+  //hadc1.Init.ContinuousConvMode = ;
+  //hadc1.Init.DiscontinuousConvMode = ;
+  //hadc1.Init.ExternalTrigConvEdge = ;
+  //hadc1.Init.DataAlign = ;
+  //hadc1.Init.NbrOfConversion = ;
+  //hadc1.Init.DMAContinuousRequests = ;
+  //hadc1.Init.EOCSelection = ;
   HAL_ADC_Init(&hadc1);
 
     /**Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time. 
     */
   sConfig.Channel = ADC_CHANNEL_8;		/* Currently set to input pin PB0, adjust as needed */
   sConfig.Rank = 1;
-  sConfig.SamplingTime = ;
+  //sConfig.SamplingTime = ;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
 }
