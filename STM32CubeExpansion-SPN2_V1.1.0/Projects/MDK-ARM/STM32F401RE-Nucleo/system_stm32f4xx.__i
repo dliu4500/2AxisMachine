@@ -1,6 +1,0 @@
--c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Inc -I ..\Inc\NUCLEO-F401RE -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\BSP\Components\L6470 -I ..\..\Drivers\BSP\Components\Common -I ..\..\Drivers\BSP\STM32F4xx-Nucleo -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1 -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE --C99
--I.\RTE\_STM32F401RE-Nucleo
--IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include
--IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
--D__UVISION_VERSION="526" -D_RTE_ -DSTM32F401xE -DUSE_HAL_DRIVER -DSTM32F401xE --C99
--o .\stm32f401re-nucleo\system_stm32f4xx.o --omf_browse .\stm32f401re-nucleo\system_stm32f4xx.crf --depend .\stm32f401re-nucleo\system_stm32f4xx.d "..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c"

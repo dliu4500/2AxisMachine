@@ -120,16 +120,22 @@ int main(void)
 	/*Initialize the motor parameters */
 	Motor_Param_Reg_Init();
 	
-	uint8_t 
+	uint8_t sigGenLevel = 0;
+	
   /* Infinite loop */
   while (1)
   {
-		//Sig gen pin
-		uint8_t pin = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
+		//Tight Polling example
+		uint8_t sigGenPin = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0); //Sig gen pin
+		if(sigGenPin > sigGenLevel) { //Rising edge
+			sigGenLevel = 1; //Sets level to high
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, 1); //Turn on LED
+		} else if(sigGenPin < sigGenLevel) { //Falling edge
+			sigGenLevel = 0;
+		}
 		
-		
-		USART_Transmit(&huart2, num2hex(pin, HALFBYTE_F));
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, pin);
+		//USART_Transmit(&huart2, num2hex(pin, HALFBYTE_F));
+		//HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, pin);
 		
 #ifdef TEST_MOTOR		
 
