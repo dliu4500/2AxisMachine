@@ -156,8 +156,9 @@ void MX_GPIO_Init(void)
 	
 	__GPIOB_CLK_ENABLE(); 
 	
+	//Try A8 & A9
 	GPIO_InitStruct.Pin = GPIO_PIN_0;
-	GPIO_InitStruct.Mode = GPIO_MODE_INPUT; // disgital Input
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT; // digital Input
 	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 	
