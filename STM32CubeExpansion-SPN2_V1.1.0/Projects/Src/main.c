@@ -120,22 +120,27 @@ int main(void)
 	/*Initialize the motor parameters */
 	Motor_Param_Reg_Init();
 	
-	uint8_t sigGenLevel = 0;
+	//uint8_t sigGenLevel = 0;
+	HAL_NVIC_SetPriority(EXTI4_IRQn, 1, 1);
+	HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+	
 	
   /* Infinite loop */
   while (1)
   {
 		//Tight Polling example
-		uint8_t sigGenPin = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0); //Sig gen pin
-		if(sigGenPin > sigGenLevel) { //Rising edge
-			sigGenLevel = 1; //Sets level to high
-			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, 1); //Turn on LED
-		} else if(sigGenPin < sigGenLevel) { //Falling edge
-			sigGenLevel = 0;
-		}
+		//uint8_t sigGenPin = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8); //Sig gen pin
+		//if(sigGenPin > sigGenLevel) { //Rising edge
+		//	sigGenLevel = 1; //Sets level to high
+		//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 1); //Turn on LED
+		//} else if(sigGenPin < sigGenLevel) { //Falling edge
+		//	sigGenLevel = 0;
+		//	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, 0);
+		//}
 		
+		//uint8_t pin = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
 		//USART_Transmit(&huart2, num2hex(pin, HALFBYTE_F));
-		//HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, pin);
+		//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, pin);
 		
 #ifdef TEST_MOTOR		
 
@@ -153,7 +158,6 @@ int main(void)
   }
 #endif
 }
-
 
 /**
   * @brief  This function is executed in case of error occurrence.

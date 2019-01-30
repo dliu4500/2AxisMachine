@@ -157,15 +157,20 @@ void MX_GPIO_Init(void)
 	__GPIOB_CLK_ENABLE(); 
 	
 	//Try A8 & A9
-	GPIO_InitStruct.Pin = GPIO_PIN_0;
+	GPIO_InitStruct.Pin = GPIO_PIN_8;
 	GPIO_InitStruct.Mode = GPIO_MODE_INPUT; // digital Input
 	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 	
-	GPIO_InitStruct.Pin = GPIO_PIN_10;
+	GPIO_InitStruct.Pin = GPIO_PIN_4;
+	GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING; // digital Input
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+	
+	GPIO_InitStruct.Pin = GPIO_PIN_9;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP; // digital Output
 	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct); 
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct); 
 }
 
 /**

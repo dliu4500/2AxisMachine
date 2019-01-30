@@ -87,6 +87,16 @@ void EXTI0_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
 }
 
+uint8_t line4Flag = 0;
+
+void EXTI4_IRQHandler(void){
+	//USART_Transmit(&huart2, "PIN4");
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, !line4Flag);
+	line4Flag = !line4Flag;
+	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_4);
+	//HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
+}
+
 /**
 * @brief This function handles USART2 global interrupt.
 */
