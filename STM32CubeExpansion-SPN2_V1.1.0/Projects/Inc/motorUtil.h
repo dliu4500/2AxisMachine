@@ -10,7 +10,7 @@
 
 void motorsInit();
 void runMotor(uint8_t, eL6470_DirId_t, uint32_t);
-void stopMotor(unit8_t);
+void stopMotor(uint8_t);
 
 
 #ifdef __cplusplus

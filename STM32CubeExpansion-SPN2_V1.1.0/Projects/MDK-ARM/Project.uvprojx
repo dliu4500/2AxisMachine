@@ -565,7 +565,7 @@
             <File>
               <FileName>motorUtil.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\motorUtil.c</FilePath>
+              <FilePath>..\Src\motorUtil.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -606,6 +606,11 @@
               <FileName>stm32f4xx_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Inc\NUCLEO-F401RE\stm32f4xx_it.h</FilePath>
+            </File>
+            <File>
+              <FileName>motorUtil.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\motorUtil.h</FilePath>
             </File>
           </Files>
         </Group>

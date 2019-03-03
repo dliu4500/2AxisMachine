@@ -35,6 +35,9 @@
 #include "example.h"
 #include "example_usart.h"
 #include "stm32f4xx_hal_adc.h"
+#include "params.h"
+#include "motorUtil.h"
+
 
 #define TEST_MOTOR	//!< Comment out this line to test the ADC
 
@@ -93,7 +96,6 @@ uint16_t Read_ADC(void);
   */
 int main(void)
 {
-	//printf("Hello");
   /* NUCLEO board initialization */
 	/* Init for UART, ADC, GPIO and SPI */
   NUCLEO_Board_Init();
@@ -101,7 +103,7 @@ int main(void)
   /* X-NUCLEO-IHM02A1 initialization */
   BSP_Init();
 	
-	MX_GPIO_Init();
+	//MX_GPIO_Init();
 	
 	#ifdef NUCLEO_USE_USART
   /* Transmit the initial message to the PC via UART */
@@ -124,9 +126,13 @@ int main(void)
 	HAL_NVIC_SetPriority(EXTI9_5_IRQn, 15, 15);
 	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 	
+	motorsInit();
+	
   /* Infinite loop */
   while (1)
   {
+		stopMotor(0);
+		
 #ifdef TEST_MOTOR		
 
 		/* Check if any Application Command for L6470 has been entered by USART */
