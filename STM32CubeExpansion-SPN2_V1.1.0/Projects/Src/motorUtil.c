@@ -6,7 +6,6 @@ StepperMotorBoardHandle_t *StepperMotorBoardHandle;
 MotorParameterData_t *MotorParameterDataGlobal, *MotorParameterDataSingle;
 
 uint8_t board;
-//uint8_t motors[2];
 
 void motorsInit() {
 	board = EXPBRD_ID(0);

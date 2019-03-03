@@ -65,8 +65,8 @@
   * @{
   */
 
-//#define MICROSTEPPING_MOTOR_EXAMPLE        //!< Uncomment to performe the standalone example
-#define MICROSTEPPING_MOTOR_USART_EXAMPLE  //!< Uncomment to performe the USART example
+#define MICROSTEPPING_MOTOR_EXAMPLE        //!< Uncomment to performe the standalone example
+//#define MICROSTEPPING_MOTOR_USART_EXAMPLE  //!< Uncomment to performe the USART example
 #if ((defined (MICROSTEPPING_MOTOR_EXAMPLE)) && (defined (MICROSTEPPING_MOTOR_USART_EXAMPLE)))
   #error "Please select an option only!"
 #elif ((!defined (MICROSTEPPING_MOTOR_EXAMPLE)) && (!defined (MICROSTEPPING_MOTOR_USART_EXAMPLE)))
@@ -108,46 +108,56 @@ int main(void)
 	#ifdef NUCLEO_USE_USART
   /* Transmit the initial message to the PC via UART */
   USART_TxWelcomeMessage();
-#endif
+	#endif
 	
-#if defined (MICROSTEPPING_MOTOR_EXAMPLE)
-  /* Perform a batch commands for X-NUCLEO-IHM02A1 */
-  MicrosteppingMotor_Example_01();
-  
-  /* Infinite loop */
-  while (1);
-#elif defined (MICROSTEPPING_MOTOR_USART_EXAMPLE)
-  /* Fill the L6470_DaisyChainMnemonic structure */
-  Fill_L6470_DaisyChainMnemonic();
+	#if defined (MICROSTEPPING_MOTOR_EXAMPLE)
+		/* Perform a batch commands for X-NUCLEO-IHM02A1 */
+		//MicrosteppingMotor_Example_01();
 	
-	/*Initialize the motor parameters */
-	Motor_Param_Reg_Init();
-	
-	HAL_NVIC_SetPriority(EXTI9_5_IRQn, 15, 15);
-	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
-	
-	motorsInit();
-	
-  /* Infinite loop */
-  while (1)
-  {
-		stopMotor(0);
+		//************************************************************//
+		//************************OUR CODE ***************************//
+		//************************************************************//
+		//IRQ initializations
+		HAL_NVIC_SetPriority(EXTI9_5_IRQn, 15, 15);
+		HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 		
-#ifdef TEST_MOTOR		
+		//Motors/board initialization
+		motorsInit();
+		
+		while (1){
+			//Task logic
+			
+			
+		}
+	#elif defined (MICROSTEPPING_MOTOR_USART_EXAMPLE)
+		/* Fill the L6470_DaisyChainMnemonic structure */
+		Fill_L6470_DaisyChainMnemonic();
+		
+		/*Initialize the motor parameters */
+		Motor_Param_Reg_Init();
+		
+		
+		
+		/* Infinite loop */
+		while (1)
+		{
+			stopMotor(0);
+			
+			#ifdef TEST_MOTOR		
 
-		/* Check if any Application Command for L6470 has been entered by USART */
-    USART_CheckAppCmd();
-		
-#else
-		
-		uint16_t myADCVal;
-		myADCVal = Read_ADC();
-		USART_Transmit(&huart2, " ADC Read: ");
-	  USART_Transmit(&huart2, num2hex(myADCVal, WORD_F));
-	  USART_Transmit(&huart2, " \n\r");
-#endif		
-  }
-#endif
+					/* Check if any Application Command for L6470 has been entered by USART */
+					USART_CheckAppCmd();
+					
+			#else
+					
+					uint16_t myADCVal;
+					myADCVal = Read_ADC();
+					USART_Transmit(&huart2, " ADC Read: ");
+					USART_Transmit(&huart2, num2hex(myADCVal, WORD_F));
+					USART_Transmit(&huart2, " \n\r");
+			#endif		
+		}
+	#endif								
 }
 
 
