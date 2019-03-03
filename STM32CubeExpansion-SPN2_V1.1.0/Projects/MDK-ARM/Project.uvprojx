@@ -562,6 +562,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\params.c</FilePath>
             </File>
+            <File>
+              <FileName>motorUtil.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\motorUtil.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

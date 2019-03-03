@@ -96,6 +96,20 @@ void USART2_IRQHandler(void)
   USART_ITCharManager(&huart2);
 }
 
+void EXTI9_5_IRQHandler(void) {
+	uint8_t pin8 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
+	uint8_t pin9 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
+	
+	USART_Transmit(&huart2, "IT 9-5 Triggered \n\r");
+	if(pin8) USART_Transmit(&huart2, "Pin 8 = 1 \n\r");
+	else USART_Transmit(&huart2, "Pin 8 = 0 \n\r");
+	
+	if(pin9) USART_Transmit(&huart2, "Pin 9 = 1 \n\r");
+	else USART_Transmit(&huart2, "Pin 9 = 0 \n\r");
+
+	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_8);
+	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_9);
+}
 /**
 * @brief This function handles EXTI Line[15:10] interrupts.
 */

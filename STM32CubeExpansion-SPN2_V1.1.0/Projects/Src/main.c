@@ -121,12 +121,12 @@ int main(void)
 	/*Initialize the motor parameters */
 	Motor_Param_Reg_Init();
 	
+	HAL_NVIC_SetPriority(EXTI9_5_IRQn, 15, 15);
+	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+	
   /* Infinite loop */
   while (1)
   {
-		uint8_t pin = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
-		USART_Transmit(&huart2, num2hex(pin, HALFBYTE_F));
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, pin);
 #ifdef TEST_MOTOR		
 
 		/* Check if any Application Command for L6470 has been entered by USART */
