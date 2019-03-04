@@ -158,18 +158,13 @@ void MX_GPIO_Init(void)
 	
 	GPIO_InitStruct.Pin = GPIO_PIN_8;
 	GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING; // digital Input
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Pull = GPIO_PULLUP;
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
  
 	GPIO_InitStruct.Pin = GPIO_PIN_9;
 	GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING; // digital Input
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Pull = GPIO_PULLUP;
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-	
-	//GPIO_InitStruct.Pin = GPIO_PIN_9;
-	//GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP; // digital Output
-	//GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-	//HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 
 /**

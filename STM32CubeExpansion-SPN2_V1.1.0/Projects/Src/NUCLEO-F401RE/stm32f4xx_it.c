@@ -35,6 +35,7 @@
 #include "stm32f4xx_it.h"
 #include "xnucleoihm02a1_interface.h"
 #include "example_usart.h"
+#include "motorUtil.h"
 
 /**
   * @addtogroup MicrosteppingMotor_Example
@@ -97,15 +98,35 @@ void USART2_IRQHandler(void)
 }
 
 void EXTI9_5_IRQHandler(void) {
+	uint8_t deadCount = 500;
 	uint8_t pin8 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
 	uint8_t pin9 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
 	
-	USART_Transmit(&huart2, "IT 9-5 Triggered \n\r");
-	if(pin8) USART_Transmit(&huart2, "Pin 8 = 1 \n\r");
-	else USART_Transmit(&huart2, "Pin 8 = 0 \n\r");
+	while((pin8 != 100 || pin9 != 100) && deadCount) {
+		pin8 += HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
+		pin9 += HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
+		deadCount--;
+	}
 	
-	if(pin9) USART_Transmit(&huart2, "Pin 9 = 1 \n\r");
-	else USART_Transmit(&huart2, "Pin 9 = 0 \n\r");
+	pin8 /= 100;
+	pin9 /= 100;
+		
+	USART_Transmit(&huart2, "IT 9-5 Triggered \n\r");
+	if(pin8) {
+		USART_Transmit(&huart2, "Pin 8 = 1 \n\r");
+		softStopMotor(0);
+		runMotor(0, L6470_DIR_FWD_ID, 500);
+	} else {
+		USART_Transmit(&huart2, "Pin 8 = 0 \n\r");
+	}
+	
+	if(pin9){
+		USART_Transmit(&huart2, "Pin 9 = 1 \n\r");
+		softStopMotor(0);
+		runMotor(0, L6470_DIR_REV_ID, 500);
+	} else {
+		USART_Transmit(&huart2, "Pin 9 = 0 \n\r");
+	}
 
 	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_8);
 	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_9);

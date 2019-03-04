@@ -118,14 +118,19 @@ int main(void)
 		//************************OUR CODE ***************************//
 		//************************************************************//
 		//IRQ initializations
-		HAL_NVIC_SetPriority(EXTI9_5_IRQn, 15, 15);
+		HAL_NVIC_SetPriority(EXTI9_5_IRQn, 1, 1);
 		HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
 		
 		//Motors/board initialization
 		motorsInit();
 		
+		runMotor(0, L6470_DIR_FWD_ID, 500);
+		HAL_Delay(2000);
+		softStopMotor(0);
+		
 		while (1){
 			//Task logic
+			
 			
 			
 		}

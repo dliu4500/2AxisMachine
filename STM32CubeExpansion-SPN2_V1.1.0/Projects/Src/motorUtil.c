@@ -18,6 +18,7 @@ void motorsInit() {
 
 //Runs motor, might need to add synchronous run for both at the same time
 void runMotor(uint8_t motorID, eL6470_DirId_t dir, uint32_t speed){
+	//Gotta figure out how to acctualy do speed
 	uint32_t Speed;
 	uint8_t device = L6470_ID(motorID);
 	
@@ -28,9 +29,16 @@ void runMotor(uint8_t motorID, eL6470_DirId_t dir, uint32_t speed){
 }
 
 //Hard stop motor, might need to add syncronous stop for both at the same time
-void stopMotor(uint8_t motorID){
+void hardStopMotor(uint8_t motorID){
 	uint8_t device = L6470_ID(motorID);
 	StepperMotorBoardHandle->StepperMotorDriverHandle[device]->Command->PrepareHardStop(device);
+	StepperMotorBoardHandle->Command->PerformPreparedApplicationCommand();
+} 
+
+//Soft stop motor, might need to add syncronous stop for both at the same time
+void softStopMotor(uint8_t motorID){
+	uint8_t device = L6470_ID(motorID);
+	StepperMotorBoardHandle->StepperMotorDriverHandle[device]->Command->PrepareSoftStop(device);
 	StepperMotorBoardHandle->Command->PerformPreparedApplicationCommand();
 } 
 
