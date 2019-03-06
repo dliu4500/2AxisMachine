@@ -97,8 +97,32 @@ void USART2_IRQHandler(void)
   USART_ITCharManager(&huart2);
 }
 
+void EXTI4_IRQHandler(void)
+{
+	uint32_t deadCount = 500;
+	uint8_t pinB4 = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
+	
+	while(pinB4 != 100 && deadCount) {
+		pinB4 += HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
+		deadCount--;
+	}
+	
+	pinB4 /= 100;
+		
+	USART_Transmit(&huart2, "IT 4 Triggered \n\r");
+	if(pinB4){
+		USART_Transmit(&huart2, "Pin B4 = 1 \n\r");
+		hardStopMotor(0);
+		runMotor(0, L6470_DIR_FWD_ID, 500);
+	} else {
+		USART_Transmit(&huart2, "Pin B4 = 0 \n\r");
+	}
+
+	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_4);
+}
+
 void EXTI9_5_IRQHandler(void) {
-	uint8_t deadCount = 500;
+	uint32_t deadCount = 500;
 	uint8_t pin8 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
 	uint8_t pin9 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
 	
@@ -114,7 +138,7 @@ void EXTI9_5_IRQHandler(void) {
 	USART_Transmit(&huart2, "IT 9-5 Triggered \n\r");
 	if(pin8) {
 		USART_Transmit(&huart2, "Pin 8 = 1 \n\r");
-		softStopMotor(0);
+		hardStopMotor(0);
 		runMotor(0, L6470_DIR_FWD_ID, 500);
 	} else {
 		USART_Transmit(&huart2, "Pin 8 = 0 \n\r");
@@ -122,7 +146,7 @@ void EXTI9_5_IRQHandler(void) {
 	
 	if(pin9){
 		USART_Transmit(&huart2, "Pin 9 = 1 \n\r");
-		softStopMotor(0);
+		hardStopMotor(0);
 		runMotor(0, L6470_DIR_REV_ID, 500);
 	} else {
 		USART_Transmit(&huart2, "Pin 9 = 0 \n\r");
@@ -136,7 +160,26 @@ void EXTI9_5_IRQHandler(void) {
 */
 void EXTI15_10_IRQHandler(void)
 {
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_13);
+	uint32_t deadCount = 500;
+	uint8_t pinB10 = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);
+	
+	while(pinB10 != 100 && deadCount) {
+		pinB10 += HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);
+		deadCount--;
+	}
+	
+	pinB10 /= 100;
+		
+	USART_Transmit(&huart2, "IT 15-10 Triggered \n\r");
+	if(pinB10){
+		USART_Transmit(&huart2, "Pin B10 = 1 \n\r");
+		hardStopMotor(0);
+		runMotor(0, L6470_DIR_REV_ID, 500);
+	} else {
+		USART_Transmit(&huart2, "Pin B10 = 0 \n\r");
+	}
+
+	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_10);
 }
 
 /**

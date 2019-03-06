@@ -8,7 +8,7 @@
 #include "stdint.h"
 #include "params.h"
 
-void motorsInit();
+void motorsInit(void);
 void runMotor(uint8_t, eL6470_DirId_t, uint32_t);
 void hardStopMotor(uint8_t);
 void softStopMotor(uint8_t);

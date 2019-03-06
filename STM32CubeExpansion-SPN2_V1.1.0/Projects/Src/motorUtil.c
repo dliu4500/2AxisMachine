@@ -7,7 +7,7 @@ MotorParameterData_t *MotorParameterDataGlobal, *MotorParameterDataSingle;
 
 uint8_t board;
 
-void motorsInit() {
+void motorsInit(void) {
 	board = EXPBRD_ID(0);
 	MotorParameterDataGlobal = GetMotorParameterInitData();
 	
