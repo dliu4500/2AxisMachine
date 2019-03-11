@@ -156,25 +156,32 @@ void MX_GPIO_Init(void)
 	
 	__GPIOB_CLK_ENABLE(); 
 	
+	//Interupt Line 5-9, pin A8
 	GPIO_InitStruct.Pin = GPIO_PIN_8;
 	GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING; // digital Input
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
- 
+	//interupt Line 5-9, pin A9
 	GPIO_InitStruct.Pin = GPIO_PIN_9;
 	GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING; // digital Input
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
 	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-	
+	//Interupt Line 4, pin B4
 	GPIO_InitStruct.Pin = GPIO_PIN_4;
 	GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING; // digital Input
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
- 
+	//Interupt Line 10-15, pin B10
 	GPIO_InitStruct.Pin = GPIO_PIN_10;
 	GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING; // digital Input
 	GPIO_InitStruct.Pull = GPIO_PULLUP;
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	//ADC, pin B0
+	GPIO_InitStruct.Pin = GPIO_PIN_0;
+	GPIO_InitStruct.Mode = GPIO_MODE_ANALOG; // digital Input
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	
 }
 
 /**
@@ -425,24 +432,26 @@ void MX_ADC1_Init(void)
 
     /**Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion) 
     */
+
   hadc1.Instance = ADC1;
-  //hadc1.Init.ClockPrescaler = ;
-  //hadc1.Init.Resolution = ;
-  //hadc1.Init.ScanConvMode = ;
-  //hadc1.Init.ContinuousConvMode = ;
-  //hadc1.Init.DiscontinuousConvMode = ;
-  //hadc1.Init.ExternalTrigConvEdge = ;
-  //hadc1.Init.DataAlign = ;
-  //hadc1.Init.NbrOfConversion = ;
-  //hadc1.Init.DMAContinuousRequests = ;
-  //hadc1.Init.EOCSelection = ;
+	
+  hadc1.Init.ClockPrescaler = ADC_CLOCKPRESCALER_PCLK_DIV2;
+  hadc1.Init.Resolution = ADC_RESOLUTION_8B;
+  hadc1.Init.ScanConvMode = DISABLE;
+  hadc1.Init.ContinuousConvMode = ENABLE;
+  hadc1.Init.DiscontinuousConvMode = DISABLE;
+  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+  hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.DMAContinuousRequests = ENABLE;
+  hadc1.Init.EOCSelection = DISABLE;
   HAL_ADC_Init(&hadc1);
 
     /**Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time. 
     */
   sConfig.Channel = ADC_CHANNEL_8;		/* Currently set to input pin PB0, adjust as needed */
   sConfig.Rank = 1;
-  //sConfig.SamplingTime = ;
+  sConfig.SamplingTime = ADC_SAMPLETIME_480CYCLES;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
 }

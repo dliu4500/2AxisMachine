@@ -583,7 +583,7 @@ I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x5C3B7F8D)
 I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x5C3B7F8D)
 I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5C3B7F8D)
 I (..\..\Drivers\BSP\STM32F4xx-Nucleo\stm32f4xx_nucleo.h)(0x5C3B7F8D)
-F (..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE\xnucleoihm02a1_interface.c)(0x5C803631)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Inc -I ..\Inc\NUCLEO-F401RE -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\BSP\Components\L6470 -I ..\..\Drivers\BSP\Components\Common -I ..\..\Drivers\BSP\STM32F4xx-Nucleo -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1 -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE --C99-I.\RTE\_STM32F401RE-Nucleo-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F401xE -DUSE_HAL_DRIVER -DSTM32F401xE --C99-o .\stm32f401re-nucleo\xnucleoihm02a1_interface.o --omf_browse .\stm32f401re-nucleo\xnucleoihm02a1_interface.crf --depend .\stm32f401re-nucleo\xnucleoihm02a1_interface.d)
+F (..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE\xnucleoihm02a1_interface.c)(0x5C86B5FA)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Inc -I ..\Inc\NUCLEO-F401RE -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\BSP\Components\L6470 -I ..\..\Drivers\BSP\Components\Common -I ..\..\Drivers\BSP\STM32F4xx-Nucleo -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1 -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE --C99-I.\RTE\_STM32F401RE-Nucleo-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F401xE -DUSE_HAL_DRIVER -DSTM32F401xE --C99-o .\stm32f401re-nucleo\xnucleoihm02a1_interface.o --omf_browse .\stm32f401re-nucleo\xnucleoihm02a1_interface.crf --depend .\stm32f401re-nucleo\xnucleoihm02a1_interface.d)
 I (..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE\xnucleoihm02a1_interface.h)(0x5C3B7F8D)
 I (..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5C3B7F8D)
 I (..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f401xe.h)(0x5C3B7F8D)
@@ -648,7 +648,7 @@ I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x5C3B7F8D)
 I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x5C3B7F8D)
 I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5C3B7F8D)
 I (..\..\Drivers\BSP\STM32F4xx-Nucleo\stm32f4xx_nucleo.h)(0x5C3B7F8D)
-F (..\Src\NUCLEO-F401RE\stm32f4xx_it.c)(0x5C803942)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Inc -I ..\Inc\NUCLEO-F401RE -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\BSP\Components\L6470 -I ..\..\Drivers\BSP\Components\Common -I ..\..\Drivers\BSP\STM32F4xx-Nucleo -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1 -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE --C99-I.\RTE\_STM32F401RE-Nucleo-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F401xE -DUSE_HAL_DRIVER -DSTM32F401xE --C99-o .\stm32f401re-nucleo\stm32f4xx_it.o --omf_browse .\stm32f401re-nucleo\stm32f4xx_it.crf --depend .\stm32f401re-nucleo\stm32f4xx_it.d)
+F (..\Src\NUCLEO-F401RE\stm32f4xx_it.c)(0x5C86C2CC)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Inc -I ..\Inc\NUCLEO-F401RE -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\BSP\Components\L6470 -I ..\..\Drivers\BSP\Components\Common -I ..\..\Drivers\BSP\STM32F4xx-Nucleo -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1 -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE --C99-I.\RTE\_STM32F401RE-Nucleo-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F401xE -DUSE_HAL_DRIVER -DSTM32F401xE --C99-o .\stm32f401re-nucleo\stm32f4xx_it.o --omf_browse .\stm32f401re-nucleo\stm32f4xx_it.crf --depend .\stm32f401re-nucleo\stm32f4xx_it.d)
 I (..\Inc\NUCLEO-F401RE\stm32f4xx_it.h)(0x5C8036B3)
 I (..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE\xnucleoihm02a1_interface.h)(0x5C3B7F8D)
 I (..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5C3B7F8D)
@@ -682,7 +682,7 @@ I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x5C3B7F8D)
 I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5C3B7F8D)
 I (..\..\Drivers\BSP\STM32F4xx-Nucleo\stm32f4xx_nucleo.h)(0x5C3B7F8D)
 I (..\Inc\example_usart.h)(0x5C3B7F8E)
-I (..\Inc\motorUtil.h)(0x5C802938)
+I (..\Inc\motorUtil.h)(0x5C86C34D)
 I (..\Inc\params.h)(0x5C3B7F8E)
 I (..\..\Drivers\BSP\Components\L6470\L6470.h)(0x5C3B7F8D)
 I (..\..\Drivers\BSP\Components\Common\microstepping_motor.h)(0x5C3B7F8D)
@@ -761,7 +761,7 @@ I (..\Inc\params.h)(0x5C3B7F8E)
 I (..\..\Drivers\BSP\Components\L6470\L6470.h)(0x5C3B7F8D)
 I (..\..\Drivers\BSP\Components\Common\microstepping_motor.h)(0x5C3B7F8D)
 I (..\..\Drivers\BSP\X-NUCLEO-IHM02A1\xnucleoihm02a1.h)(0x5C3B7F8D)
-F (..\Src\main.c)(0x5C8037F1)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Inc -I ..\Inc\NUCLEO-F401RE -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\BSP\Components\L6470 -I ..\..\Drivers\BSP\Components\Common -I ..\..\Drivers\BSP\STM32F4xx-Nucleo -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1 -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE --C99-I.\RTE\_STM32F401RE-Nucleo-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F401xE -DUSE_HAL_DRIVER -DSTM32F401xE --C99-o .\stm32f401re-nucleo\main.o --omf_browse .\stm32f401re-nucleo\main.crf --depend .\stm32f401re-nucleo\main.d)
+F (..\Src\main.c)(0x5C86C154)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Inc -I ..\Inc\NUCLEO-F401RE -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\BSP\Components\L6470 -I ..\..\Drivers\BSP\Components\Common -I ..\..\Drivers\BSP\STM32F4xx-Nucleo -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1 -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE --C99-I.\RTE\_STM32F401RE-Nucleo-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F401xE -DUSE_HAL_DRIVER -DSTM32F401xE --C99-o .\stm32f401re-nucleo\main.o --omf_browse .\stm32f401re-nucleo\main.crf --depend .\stm32f401re-nucleo\main.d)
 I (..\..\Drivers\BSP\X-NUCLEO-IHM02A1\xnucleoihm02a1.h)(0x5C3B7F8D)
 I (..\..\Drivers\BSP\Components\L6470\L6470.h)(0x5C3B7F8D)
 I (..\..\Drivers\BSP\Components\Common\microstepping_motor.h)(0x5C3B7F8D)
@@ -799,15 +799,15 @@ I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x5C3B7F8D)
 I (..\..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5C3B7F8D)
 I (..\..\Drivers\BSP\STM32F4xx-Nucleo\stm32f4xx_nucleo.h)(0x5C3B7F8D)
 I (..\Inc\params.h)(0x5C3B7F8E)
-I (..\Inc\motorUtil.h)(0x5C802938)
+I (..\Inc\motorUtil.h)(0x5C86C34D)
 F (..\Src\params.c)(0x5C3B7F8E)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Inc -I ..\Inc\NUCLEO-F401RE -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\BSP\Components\L6470 -I ..\..\Drivers\BSP\Components\Common -I ..\..\Drivers\BSP\STM32F4xx-Nucleo -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1 -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE --C99-I.\RTE\_STM32F401RE-Nucleo-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F401xE -DUSE_HAL_DRIVER -DSTM32F401xE --C99-o .\stm32f401re-nucleo\params.o --omf_browse .\stm32f401re-nucleo\params.crf --depend .\stm32f401re-nucleo\params.d)
 I (..\Inc\params.h)(0x5C3B7F8E)
 I (..\..\Drivers\BSP\Components\L6470\L6470.h)(0x5C3B7F8D)
 I (..\..\Drivers\BSP\Components\Common\microstepping_motor.h)(0x5C3B7F8D)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F920E)
 I (..\..\Drivers\BSP\X-NUCLEO-IHM02A1\xnucleoihm02a1.h)(0x5C3B7F8D)
-F (..\Src\motorUtil.c)(0x5C802940)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Inc -I ..\Inc\NUCLEO-F401RE -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\BSP\Components\L6470 -I ..\..\Drivers\BSP\Components\Common -I ..\..\Drivers\BSP\STM32F4xx-Nucleo -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1 -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE --C99-I.\RTE\_STM32F401RE-Nucleo-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F401xE -DUSE_HAL_DRIVER -DSTM32F401xE --C99-o .\stm32f401re-nucleo\motorutil.o --omf_browse .\stm32f401re-nucleo\motorutil.crf --depend .\stm32f401re-nucleo\motorutil.d)
-I (..\Inc\motorUtil.h)(0x5C802938)
+F (..\Src\motorUtil.c)(0x5C86C2EA)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\Inc -I ..\Inc\NUCLEO-F401RE -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc -I ..\..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\Drivers\BSP\Components\L6470 -I ..\..\Drivers\BSP\Components\Common -I ..\..\Drivers\BSP\STM32F4xx-Nucleo -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1 -I ..\..\Drivers\BSP\X-NUCLEO-IHM02A1\NUCLEO-F401RE --C99-I.\RTE\_STM32F401RE-Nucleo-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="526" -D_RTE_ -DSTM32F401xE -DUSE_HAL_DRIVER -DSTM32F401xE --C99-o .\stm32f401re-nucleo\motorutil.o --omf_browse .\stm32f401re-nucleo\motorutil.crf --depend .\stm32f401re-nucleo\motorutil.d)
+I (..\Inc\motorUtil.h)(0x5C86C34D)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F920E)
 I (..\Inc\params.h)(0x5C3B7F8E)
 I (..\..\Drivers\BSP\Components\L6470\L6470.h)(0x5C3B7F8D)
@@ -848,5 +848,5 @@ F (..\Inc\NUCLEO-F401RE\stm32f4xx_hal_conf.h)(0x5C3B7F8E)()
 F (..\Inc\example.h)(0x5C3B7F8E)()
 F (..\Inc\params.h)(0x5C3B7F8E)()
 F (..\Inc\NUCLEO-F401RE\stm32f4xx_it.h)(0x5C8036B3)()
-F (..\Inc\motorUtil.h)(0x5C802938)()
+F (..\Inc\motorUtil.h)(0x5C86C34D)()
 F (..\Src\NUCLEO-F401RE\startup_stm32f401xe.s)(0x5C4F6C04)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_STM32F401RE-Nucleo-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 526" --pd "_RTE_ SETA 1" --pd "STM32F401xE SETA 1"--list startup_stm32f401xe.lst --xref -o .\stm32f401re-nucleo\startup_stm32f401xe.o --depend .\stm32f401re-nucleo\startup_stm32f401xe.d)

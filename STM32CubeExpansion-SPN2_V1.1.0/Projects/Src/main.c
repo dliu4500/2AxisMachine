@@ -39,7 +39,7 @@
 #include "motorUtil.h"
 
 
-#define TEST_MOTOR	//!< Comment out this line to test the ADC
+//#define TEST_MOTOR	//!< Comment out this line to test the ADC
 
 /**
   * @defgroup   MotionControl
@@ -127,17 +127,29 @@ int main(void)
 		HAL_NVIC_SetPriority(EXTI15_10_IRQn, 1, 1);
 		HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 		
+		
 		//Motors/board initialization
 		motorsInit();
 		
-		runMotor(0, L6470_DIR_FWD_ID, 500);
+		//ADC init
+		HAL_ADC_Start(&hadc1);
+		
+		runMotor(0, L6470_DIR_FWD_ID);
+		runMotor(1, L6470_DIR_FWD_ID);
+		
 		HAL_Delay(2000);
-		softStopMotor(0);
+		//softStopMotor(0);
+		
+		uint32_t g_ADCVal;
 		
 		while (1){
 			//Task logic
-			
-			
+			if(HAL_ADC_PollForConversion(&hadc1, 100000) == HAL_OK) {
+				g_ADCVal = HAL_ADC_GetValue(&hadc1);
+				uint8_t val = (uint8_t)g_ADCVal;
+				setSpeed(0, val);
+				//if(g_ADCVal > 0) USART_Transmit(&huart2, &val);
+			}
 			
 		}
 	#elif defined (MICROSTEPPING_MOTOR_USART_EXAMPLE)
