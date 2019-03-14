@@ -141,15 +141,30 @@ int main(void)
 		//softStopMotor(0);
 		
 		uint32_t g_ADCVal;
+		char ADCVal[3];
+		
+		char motorSpeed[10];
+		uint32_t newSpeed=0;
 		
 		while (1){
 			//Task logic
-			if(HAL_ADC_PollForConversion(&hadc1, 100000) == HAL_OK) {
+			
+			
+			//Obtains ADC value, seperates each letter into char then output (works!)
+					
+			if(HAL_ADC_PollForConversion(&hadc1, 100000) == HAL_OK){	
 				g_ADCVal = HAL_ADC_GetValue(&hadc1);
-				uint8_t val = (uint8_t)g_ADCVal;
-				setSpeed(0, val);
-				//if(g_ADCVal > 0) USART_Transmit(&huart2, &val);
+				sprintf(ADCVal, "%d", g_ADCVal);
+				setSpeed(0, g_ADCVal);
+				//USART_Transmit(&huart2, &ADCVal[0]);
+				//USART_Transmit(&huart2, "\n\r");
 			}
+			USART_Transmit(&huart2, "Current Speed:");
+			newSpeed =  getSpeeds() * g_ADCVal/255;
+			sprintf(motorSpeed, "%d", newSpeed);
+			USART_Transmit(&huart2, &motorSpeed[0]);
+			USART_Transmit(&huart2, "\n\r");
+			
 			
 		}
 	#elif defined (MICROSTEPPING_MOTOR_USART_EXAMPLE)

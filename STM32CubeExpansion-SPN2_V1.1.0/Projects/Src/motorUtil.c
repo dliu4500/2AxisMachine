@@ -35,7 +35,7 @@ void setSpeed(uint8_t motorID, uint8_t adcVal) {
 	uint8_t device = L6470_ID(motorID);
 	
 	float ratio = adcVal / 255;
-	float newSpeed = Step_s_2_Speed(MotorParameterDataSingle->minspeed + (MotorParameterDataSingle->maxspeed - MotorParameterDataSingle->minspeed) * ratio);
+	uint32_t newSpeed = Step_s_2_Speed(MotorParameterDataSingle->maxspeed * ratio);
 	
 	StepperMotorBoardHandle->StepperMotorDriverHandle[device]->Command->PrepareRun(device, motorDir[motorID], newSpeed);
 	StepperMotorBoardHandle->Command->PerformPreparedApplicationCommand();
@@ -54,5 +54,12 @@ void softStopMotor(uint8_t motorID){
 	StepperMotorBoardHandle->StepperMotorDriverHandle[device]->Command->PrepareSoftStop(device);
 	StepperMotorBoardHandle->Command->PerformPreparedApplicationCommand();
 } 
+
+//Return speed register Val
+uint32_t getSpeeds(){
+	//return MotorParameterDataSingle->speed;//300
+	return MotorParameterDataSingle->maxspeed;//400
+	//return MotorParameterDataSingle->minspeed;//0
+}
 
 
