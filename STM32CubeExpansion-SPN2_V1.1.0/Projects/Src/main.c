@@ -140,7 +140,7 @@ int main(void)
 		HAL_Delay(2000);
 		//softStopMotor(0);
 		
-		uint32_t g_ADCVal;
+		uint32_t ADCValue;
 		char ADCVal[3];
 		
 		char motorSpeed[10];
@@ -153,17 +153,19 @@ int main(void)
 			//Obtains ADC value, seperates each letter into char then output (works!)
 					
 			if(HAL_ADC_PollForConversion(&hadc1, 100000) == HAL_OK){	
-				g_ADCVal = HAL_ADC_GetValue(&hadc1);
-				sprintf(ADCVal, "%d", g_ADCVal);
-				setSpeed(0, g_ADCVal);
-				//USART_Transmit(&huart2, &ADCVal[0]);
-				//USART_Transmit(&huart2, "\n\r");
+				ADCValue = HAL_ADC_GetValue(&hadc1);
+				sprintf(ADCVal, "%d", ADCValue);
+				if (ADCValue <=7)
+						ADCValue =0;
+				setSpeed(0, ADCValue);
+				USART_Transmit(&huart2, &ADCVal[0]);
+				USART_Transmit(&huart2, "\n\r");
 			}
-			USART_Transmit(&huart2, "Current Speed:");
-			newSpeed =  getSpeeds() * g_ADCVal/255;
+			//USART_Transmit(&huart2, "Current Speed:");
+			newSpeed =  getSpeeds() * ADCValue/255;
 			sprintf(motorSpeed, "%d", newSpeed);
-			USART_Transmit(&huart2, &motorSpeed[0]);
-			USART_Transmit(&huart2, "\n\r");
+			//USART_Transmit(&huart2, &motorSpeed[0]);
+			//USART_Transmit(&huart2, "\n\r");
 			
 			
 		}
