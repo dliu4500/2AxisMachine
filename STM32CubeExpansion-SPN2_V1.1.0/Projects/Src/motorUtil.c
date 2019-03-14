@@ -34,8 +34,8 @@ void runMotor(uint8_t motorID, eL6470_DirId_t dir){
 void setSpeed(uint8_t motorID, uint8_t adcVal) {
 	uint8_t device = L6470_ID(motorID);
 	
-	//float ratio = adcVal / 255;
-	uint32_t newSpeed = Step_s_2_Speed(adcVal*1.5);
+	float rangeFactor = ((float)MotorParameterDataSingle->maxspeed - (float)MotorParameterDataSingle->minspeed) / 255.0;
+	uint32_t newSpeed = Step_s_2_Speed(adcVal*rangeFactor);
 	
 	StepperMotorBoardHandle->StepperMotorDriverHandle[device]->Command->PrepareRun(device, motorDir[motorID], newSpeed);
 	StepperMotorBoardHandle->Command->PerformPreparedApplicationCommand();

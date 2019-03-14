@@ -140,32 +140,27 @@ int main(void)
 		HAL_Delay(2000);
 		//softStopMotor(0);
 		
-		uint32_t ADCValue;
-		char ADCVal[3];
+		uint32_t ADCValue1;
+		uint32_t ADCValue2;
 		
-		char motorSpeed[10];
-		uint32_t newSpeed=0;
 		
 		while (1){
 			//Task logic
 			
 			
 			//Obtains ADC value, seperates each letter into char then output (works!)
-					
-			if(HAL_ADC_PollForConversion(&hadc1, 100000) == HAL_OK){	
-				ADCValue = HAL_ADC_GetValue(&hadc1);
-				sprintf(ADCVal, "%d", ADCValue);
-				if (ADCValue <=7)
-						ADCValue =0;
-				setSpeed(0, ADCValue);
-				USART_Transmit(&huart2, &ADCVal[0]);
-				USART_Transmit(&huart2, "\n\r");
-			}
-			//USART_Transmit(&huart2, "Current Speed:");
-			newSpeed =  getSpeeds() * ADCValue/255;
-			sprintf(motorSpeed, "%d", newSpeed);
-			//USART_Transmit(&huart2, &motorSpeed[0]);
-			//USART_Transmit(&huart2, "\n\r");
+			HAL_ADC_PollForConversion(&hadc1, 100000);
+			ADCValue1 = HAL_ADC_GetValue(&hadc1);
+			HAL_ADC_PollForConversion(&hadc1, 100000);
+			ADCValue2 = HAL_ADC_GetValue(&hadc1);
+			
+			//sprintf(ADCVal1, "%d", ADCValue);
+			//setSpeed(0, ADCValue);
+			USART_Transmit(&huart2, num2hex(ADCValue1, WORD_F));
+			USART_Transmit(&huart2, " ");
+			USART_Transmit(&huart2, num2hex(ADCValue2, WORD_F));			
+			USART_Transmit(&huart2, "\n\r");
+			//HAL_Delay(100);
 			
 			
 		}
