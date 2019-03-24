@@ -11,6 +11,7 @@
 void motorsInit(void);
 void runMotor(uint8_t, eL6470_DirId_t);
 void setSpeed(uint8_t, uint32_t);
+void stepMotor(uint8_t, uint32_t);
 void hardStopMotor(uint8_t);
 void softStopMotor(uint8_t);
 uint32_t getSpeeds(void);
