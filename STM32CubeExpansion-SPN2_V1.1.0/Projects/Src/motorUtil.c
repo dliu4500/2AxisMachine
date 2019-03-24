@@ -31,15 +31,22 @@ void runMotor(uint8_t motorID, eL6470_DirId_t dir){
 	StepperMotorBoardHandle->Command->PerformPreparedApplicationCommand();
 }
 
-void setSpeed(uint8_t motorID, uint8_t adcVal) {
+void setSpeed(uint8_t motorID, uint32_t adcVal) {
 	uint8_t device = L6470_ID(motorID);
 	
-	float rangeFactor = ((float)MotorParameterDataSingle->maxspeed - (float)MotorParameterDataSingle->minspeed) / 255.0;
+	float rangeFactor = ((float)MotorParameterDataSingle->maxspeed - (float)MotorParameterDataSingle->minspeed) / 1023.0;
 	uint32_t newSpeed = Step_s_2_Speed(adcVal*rangeFactor);
 	
 	StepperMotorBoardHandle->StepperMotorDriverHandle[device]->Command->PrepareRun(device, motorDir[motorID], newSpeed);
 	StepperMotorBoardHandle->Command->PerformPreparedApplicationCommand();
 }
+
+void stepMotor(uint8_t motorID, uint32_t steps) {
+	uint8_t device = L6470_ID(motorID);
+	
+	StepperMotorBoardHandle->StepperMotorDriverHandle[device]->Command->PrepareMove(device, motorDir[motorID], steps);
+	StepperMotorBoardHandle->Command->PerformPreparedApplicationCommand();
+}	
 
 //Hard stop motor, might need to add syncronous stop for both at the same time
 void hardStopMotor(uint8_t motorID){

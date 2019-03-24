@@ -148,21 +148,19 @@ int main(void)
 			//Task logic
 			
 			
-			//Obtains ADC value, seperates each letter into char then output (works!)
 			HAL_ADC_PollForConversion(&hadc1, 100000);
 			ADCValue1 = HAL_ADC_GetValue(&hadc1);
 			HAL_ADC_PollForConversion(&hadc1, 100000);
 			ADCValue2 = HAL_ADC_GetValue(&hadc1);
 			
-			//sprintf(ADCVal1, "%d", ADCValue);
-			//setSpeed(0, ADCValue);
 			USART_Transmit(&huart2, num2hex(ADCValue1, WORD_F));
 			USART_Transmit(&huart2, " ");
 			USART_Transmit(&huart2, num2hex(ADCValue2, WORD_F));			
 			USART_Transmit(&huart2, "\n\r");
-			//HAL_Delay(100);
 			
-			
+			setSpeed(0, ADCValue1);
+			setSpeed(1, ADCValue2);
+			HAL_Delay(100);
 		}
 	#elif defined (MICROSTEPPING_MOTOR_USART_EXAMPLE)
 		/* Fill the L6470_DaisyChainMnemonic structure */

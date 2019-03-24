@@ -567,6 +567,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\motorUtil.c</FilePath>
             </File>
+            <File>
+              <FileName>motorTests.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\motorTests.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -611,6 +616,11 @@
               <FileName>motorUtil.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Inc\motorUtil.h</FilePath>
+            </File>
+            <File>
+              <FileName>motorTests.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\motorTests.h</FilePath>
             </File>
           </Files>
         </Group>
