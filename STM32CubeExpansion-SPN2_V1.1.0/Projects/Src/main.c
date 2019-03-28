@@ -37,7 +37,7 @@
 #include "stm32f4xx_hal_adc.h"
 #include "params.h"
 #include "motorUtil.h"
-
+#include "motorTests.h"
 
 //#define TEST_MOTOR	//!< Comment out this line to test the ADC
 
@@ -133,21 +133,21 @@ int main(void)
 		
 		//ADC init
 		HAL_ADC_Start(&hadc1);
+		//setSpeed(1, 4095.0);
+		//setSpeed(0, 4095.0/4.0);
+		//runMotor(0, L6470_DIR_FWD_ID);
+		//runMotor(1, L6470_DIR_FWD_ID);
+		//stepMotor(0, 5000);
 		
-		runMotor(0, L6470_DIR_FWD_ID);
-		runMotor(1, L6470_DIR_FWD_ID);
-		
-		HAL_Delay(2000);
+		//HAL_Delay(2000);
 		//softStopMotor(0);
 		
 		uint32_t ADCValue1;
 		uint32_t ADCValue2;
-		
+		//uint32_t lastKnownValue;
 		
 		while (1){
-			//Task logic
-			
-			
+			//Task logic	
 			HAL_ADC_PollForConversion(&hadc1, 100000);
 			ADCValue1 = HAL_ADC_GetValue(&hadc1);
 			HAL_ADC_PollForConversion(&hadc1, 100000);
@@ -158,9 +158,10 @@ int main(void)
 			USART_Transmit(&huart2, num2hex(ADCValue2, WORD_F));			
 			USART_Transmit(&huart2, "\n\r");
 			
+			//if(abs(ADCValue1 - ADCValue2) >  16)
 			setSpeed(0, ADCValue1);
-			setSpeed(1, ADCValue2);
-			HAL_Delay(100);
+			setSpeed(1, ADCValue2); 
+			//HAL_Delay(100);
 		}
 	#elif defined (MICROSTEPPING_MOTOR_USART_EXAMPLE)
 		/* Fill the L6470_DaisyChainMnemonic structure */

@@ -6,6 +6,7 @@ StepperMotorBoardHandle_t *StepperMotorBoardHandle;
 MotorParameterData_t *MotorParameterDataGlobal, *MotorParameterDataSingle;
 
 eL6470_DirId_t motorDir[2];
+uint32_t motorSpeeds[2] = {100,100};
 
 uint8_t board;
 
@@ -26,16 +27,20 @@ void runMotor(uint8_t motorID, eL6470_DirId_t dir){
 	motorDir[motorID] = dir;
 	
 	MotorParameterDataSingle = MotorParameterDataGlobal+((board*L6470DAISYCHAINSIZE)+device);
-	Speed = Step_s_2_Speed(MotorParameterDataSingle->speed);
+	Speed = Step_s_2_Speed(motorSpeeds[motorID]);
 	StepperMotorBoardHandle->StepperMotorDriverHandle[device]->Command->PrepareRun(device, motorDir[motorID], Speed);
 	StepperMotorBoardHandle->Command->PerformPreparedApplicationCommand();
 }
 
 void setSpeed(uint8_t motorID, uint32_t adcVal) {
+	if(adcVal < 0 || adcVal > 4095) return;
+	
 	uint8_t device = L6470_ID(motorID);
 	
-	float rangeFactor = ((float)MotorParameterDataSingle->maxspeed - (float)MotorParameterDataSingle->minspeed) / 1023.0;
+	float rangeFactor = ((float)MotorParameterDataSingle->maxspeed - (float)MotorParameterDataSingle->minspeed) / 63.0;
 	uint32_t newSpeed = Step_s_2_Speed(adcVal*rangeFactor);
+	
+	motorSpeeds[motorID] = adcVal*rangeFactor;
 	
 	StepperMotorBoardHandle->StepperMotorDriverHandle[device]->Command->PrepareRun(device, motorDir[motorID], newSpeed);
 	StepperMotorBoardHandle->Command->PerformPreparedApplicationCommand();

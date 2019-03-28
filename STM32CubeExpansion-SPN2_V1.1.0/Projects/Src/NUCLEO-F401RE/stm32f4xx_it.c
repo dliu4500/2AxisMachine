@@ -135,7 +135,7 @@ void EXTI9_5_IRQHandler(void) {
 	pin8 /= 100;
 	pin9 /= 100;
 		
-	USART_Transmit(&huart2, "IT 9-5 Triggered \n\r");
+	//USART_Transmit(&huart2, "IT 9-5 Triggered \n\r");
 	if(pin8) {
 		//USART_Transmit(&huart2, "Pin 8 = 1 \n\r");
 		hardStopMotor(0);
