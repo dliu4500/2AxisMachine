@@ -38,6 +38,7 @@
 #include "params.h"
 #include "motorUtil.h"
 #include "motorTests.h"
+#include "dataProcessing.h"
 
 //#define TEST_MOTOR	//!< Comment out this line to test the ADC
 
@@ -142,25 +143,32 @@ int main(void)
 		//HAL_Delay(2000);
 		//softStopMotor(0);
 		
-		uint32_t ADCValue1;
-		uint32_t ADCValue2;
-		//uint32_t lastKnownValue;
+		uint32_t buffer1[10];
+		uint32_t runningAvg2;
+		uint32_t finalVal1;
 		
 		while (1){
-			//Task logic	
-			HAL_ADC_PollForConversion(&hadc1, 100000);
-			ADCValue1 = HAL_ADC_GetValue(&hadc1);
-			HAL_ADC_PollForConversion(&hadc1, 100000);
-			ADCValue2 = HAL_ADC_GetValue(&hadc1);
+			//Task logic	AbsPos_2_Position
+			for(uint8_t i = 0; i < 10; ++i) {
+				HAL_ADC_PollForConversion(&hadc1, 100000);
+				buffer1[i] = HAL_ADC_GetValue(&hadc1);
+				HAL_ADC_PollForConversion(&hadc1, 100000);
+				runningAvg2 += HAL_ADC_GetValue(&hadc1);
+			}
 			
-			USART_Transmit(&huart2, num2hex(ADCValue1, WORD_F));
+			runningAvg2 /= 10;
+			
+			finalVal1 = removeCrossTalk(buffer1, runningAvg2);
+			
+			USART_Transmit(&huart2, num2hex(finalVal1, WORD_F));
 			USART_Transmit(&huart2, " ");
-			USART_Transmit(&huart2, num2hex(ADCValue2, WORD_F));			
+			USART_Transmit(&huart2, num2hex(runningAvg2, WORD_F));			
 			USART_Transmit(&huart2, "\n\r");
 			
-			//if(abs(ADCValue1 - ADCValue2) >  16)
-			setSpeed(0, ADCValue1);
-			setSpeed(1, ADCValue2); 
+			
+			//if((ADCValue1 > ADCValue2? ADCValue1 - ADCValue2 : ADCValue2 - ADCValue1) >  8)
+			setSpeed(0, finalVal1);
+			setSpeed(1, runningAvg2); 
 			//HAL_Delay(100);
 		}
 	#elif defined (MICROSTEPPING_MOTOR_USART_EXAMPLE)

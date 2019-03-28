@@ -572,6 +572,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\motorTests.c</FilePath>
             </File>
+            <File>
+              <FileName>dataProcessing.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\dataProcessing.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -621,6 +626,11 @@
               <FileName>motorTests.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Inc\motorTests.h</FilePath>
+            </File>
+            <File>
+              <FileName>dataProcessing.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Inc\dataProcessing.h</FilePath>
             </File>
           </Files>
         </Group>
