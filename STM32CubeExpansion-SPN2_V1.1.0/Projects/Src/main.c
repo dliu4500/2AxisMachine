@@ -144,18 +144,12 @@ int main(void)
 		//HAL_Delay(2000);
 		//softStopMotor(0);
 		
-		uint32_t buffer1[15];
-		uint32_t runningAvg2;
-		uint32_t finalVal1;
-		
-		float alpha = 0.4;
-		HAL_ADC_PollForConversion(&hadc1, 100000);
-		uint32_t prevVal1 = HAL_ADC_GetValue(&hadc1);
-		HAL_ADC_PollForConversion(&hadc1, 100000);
-		uint32_t prevVal2 = HAL_ADC_GetValue(&hadc1);
-		
-		while (1){ 
-			//Task logic	AbsPos_2_Position
+		while (1){
+			uint32_t buffer1[15];
+			uint32_t runningAvg2 = 0;
+			uint32_t finalVal1;
+			
+			//Task logic
 			for(uint8_t i = 0; i < 15; ++i) {
 				HAL_ADC_PollForConversion(&hadc1, 100000);
 				buffer1[i] = HAL_ADC_GetValue(&hadc1);

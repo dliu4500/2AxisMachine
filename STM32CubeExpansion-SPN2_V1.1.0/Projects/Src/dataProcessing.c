@@ -27,14 +27,7 @@ uint32_t removeCrossTalk(uint32_t stream1[15], uint32_t val2) {
 	runningAvg1 /= stream1Count;
 	runningAvg2 /= stream2Count;
 	
-	//USART_Transmit(&huart2, num2hex(runningAvg1, WORD_F));
-	//USART_Transmit(&huart2, " ");
-	//USART_Transmit(&huart2, num2hex(runningAvg1, WORD_F));
-	//USART_Transmit(&huart2, " ");
-	
 	if(runningAvg2 == -1) return runningAvg1 ;
-	
-
 	
 	if(abs((int)runningAvg1 - (int)val2) < abs((int)runningAvg2 - (int)val2)) return runningAvg2;
 	else return runningAvg1;
