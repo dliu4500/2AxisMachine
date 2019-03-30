@@ -39,6 +39,7 @@
 #include "motorUtil.h"
 #include "motorTests.h"
 #include "dataProcessing.h"
+#include "stdlib.h"
 
 //#define TEST_MOTOR	//!< Comment out this line to test the ADC
 
@@ -143,33 +144,44 @@ int main(void)
 		//HAL_Delay(2000);
 		//softStopMotor(0);
 		
-		uint32_t buffer1[10];
+		uint32_t buffer1[15];
 		uint32_t runningAvg2;
 		uint32_t finalVal1;
 		
-		while (1){
+		float alpha = 0.4;
+		HAL_ADC_PollForConversion(&hadc1, 100000);
+		uint32_t prevVal1 = HAL_ADC_GetValue(&hadc1);
+		HAL_ADC_PollForConversion(&hadc1, 100000);
+		uint32_t prevVal2 = HAL_ADC_GetValue(&hadc1);
+		
+		while (1){ 
 			//Task logic	AbsPos_2_Position
-			for(uint8_t i = 0; i < 10; ++i) {
+			for(uint8_t i = 0; i < 15; ++i) {
 				HAL_ADC_PollForConversion(&hadc1, 100000);
 				buffer1[i] = HAL_ADC_GetValue(&hadc1);
 				HAL_ADC_PollForConversion(&hadc1, 100000);
 				runningAvg2 += HAL_ADC_GetValue(&hadc1);
 			}
 			
-			runningAvg2 /= 10;
-			
+			runningAvg2 /= 15;
 			finalVal1 = removeCrossTalk(buffer1, runningAvg2);
 			
-			USART_Transmit(&huart2, num2hex(finalVal1, WORD_F));
-			USART_Transmit(&huart2, " ");
-			USART_Transmit(&huart2, num2hex(runningAvg2, WORD_F));			
-			USART_Transmit(&huart2, "\n\r");
-			
-			
-			//if((ADCValue1 > ADCValue2? ADCValue1 - ADCValue2 : ADCValue2 - ADCValue1) >  8)
-			setSpeed(0, finalVal1);
-			setSpeed(1, runningAvg2); 
-			//HAL_Delay(100);
+			if(finalVal1 < 75 && runningAvg2 < 75) {
+				//finalVal1 = (float)finalVal1 * alpha + (1.0 - alpha) * (float)prevVal1;
+				//runningAvg2 = (float)runningAvg2 * alpha + (1.0 - alpha) * (float)prevVal2;
+				
+				USART_Transmit(&huart2, num2hex(finalVal1, WORD_F));
+				USART_Transmit(&huart2, " ");
+				USART_Transmit(&huart2, num2hex(runningAvg2, WORD_F));			
+				USART_Transmit(&huart2, "\n\r");
+				
+				//prevVal1 = finalVal1;
+				//prevVal2 = runningAvg2;
+				
+				setSpeed(0, finalVal1);
+				setSpeed(1, runningAvg2); 
+			}
+			//HAL_Delay(100); 
 		}
 	#elif defined (MICROSTEPPING_MOTOR_USART_EXAMPLE)
 		/* Fill the L6470_DaisyChainMnemonic structure */

@@ -8,7 +8,7 @@
 #include "stdint.h"
 #include "params.h"
 
-uint32_t removeCrossTalk(uint32_t stream1[10], uint32_t val2);
+uint32_t removeCrossTalk(uint32_t stream1[15], uint32_t val2);
 
 #ifdef __cplusplus
 }

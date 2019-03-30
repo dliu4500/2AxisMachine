@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\STM32F401RE-Nucleo\STM32F401RE-Nucleo.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\STM32F401RE-Nucleo\STM32F401RE-Nucleo.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Mar 27 23:10:10 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Mar 30 16:06:33 2019
 <BR><P>
-<H3>Maximum Stack Usage =        208 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        232 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; NUCLEO_Board_Init &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
 <P>
@@ -1938,8 +1938,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;L6470_Config
 </UL>
 
-<P><STRONG><a name="[88]"></a>main</STRONG> (Thumb, 206 bytes, Stack size 40 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = main &rArr; NUCLEO_Board_Init &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
+<P><STRONG><a name="[88]"></a>main</STRONG> (Thumb, 246 bytes, Stack size 64 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = main &rArr; NUCLEO_Board_Init &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority &rArr; NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Start
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_PollForConversion
@@ -1973,7 +1973,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f8]"></a>removeCrossTalk</STRONG> (Thumb, 148 bytes, Stack size 24 bytes, dataprocessing.o(i.removeCrossTalk))
+<P><STRONG><a name="[f8]"></a>removeCrossTalk</STRONG> (Thumb, 144 bytes, Stack size 24 bytes, dataprocessing.o(i.removeCrossTalk))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = removeCrossTalk
 </UL>
 <BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
